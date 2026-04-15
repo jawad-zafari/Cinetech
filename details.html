@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails</title>
+    <link rel="stylesheet" href="styles/Accueil.css">
+    <link rel="stylesheet" href="styles/details.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="retour"><a href="index.html">⬅ Retour</a></div>
+        </nav>
+    </header>
+
+    <main id="details-container">
+        <section id="movie-hero" class="movie-hero">
+            <div class="hero-content-wrapper">
+                <div class="poster-container">
+                    <img id="movie-poster" src="" alt="Poster">
+                </div>
+                <div class="info-container">
+                    <h1 id="movie-title">Chargement...</h1>
+                    <p class="tagline" id="movie-tagline"></p>
+                    <div class="meta-info">
+                        <span id="movie-date"></span>
+                        <span id="movie-runtime"></span>
+                        <span id="movie-rating"></span>
+                    </div>
+                    <div class="genres" id="movie-genres"></div>
+                    <h3>Synopsis</h3>
+                    <p id="movie-overview"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cast-section">
+            <h2>Casting Principal</h2>
+            <div id="cast-grid" class="cast-grid"></div>
+        </section>
+    </main>
+
+    <script type="module" src="dist/details.js"></script>
+</body>
+</html>
