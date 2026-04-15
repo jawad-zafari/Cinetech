@@ -1,0 +1,59 @@
+.retour a {
+    flex: 1; 
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 200;
+    /* text-transform: uppercase; */
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+.retour a:hover {
+    color: #e50914;
+    text-decoration: underline;
+}
+.movie-hero {
+    min-height: 80vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
+
+.hero-content-wrapper {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+}
+
+.poster-container img {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.info-container {
+    flex: 1;
+}
+
+.genres span {
+    background: #e50914;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+.cast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px 50px;
+}
+
+.actor-card img {
+    width: 100%;
+    border-radius: 8px;
+}
