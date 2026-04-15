@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinetech</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">Cinetech</div>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Rechercher..." />
+        </div>
+        <div class="menu">
+          <a href="#">Films</a>
+          <a href="#">Séries</a>
+          <a href="#">Connexion</a>
+          <a href="#">S'inscrire</a>
+        </div>
+      </nav>
+    </header>
+    
+    <section id="hero-banner" class="hero">
+      <div class="hero-overlay">
+        <h1 id="hero-title">Chargement...</h1>
+        <p id="hero-description"></p>
+        <button id="hero-btn">Voir les détails</button>
+      </div>
+    </section>
+
+    <main>
+      <h2 class="section-title">Films Populaires</h2>
+
+      <div id="movieGrid" class="grid"></div>
+
+      <div class="pagination">
+        <button id="prevBtn">Précédent</button>
+        <span id="pageNumber">1</span>
+        <button id="nextBtn">Suivant</button>
+      </div>
+    </main>
+
+    <script type="module" src="dist/app.js"></script>
+    <script type="module" src="dist/search.js"></script>
+  </body>
+</html>
