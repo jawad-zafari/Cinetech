@@ -89,6 +89,25 @@ nav {
     padding: 20px;
 }
 
+
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; 
+    gap: 20px;
+    padding: 20px;
+    scroll-behavior: smooth;
+}
+
+/* .carousel-container::-webkit-scrollbar {
+    display: none;
+} */
+
+.carousel-container .movie-card {
+    flex: 0 0 200px; 
+    scroll-snap-align: start; 
+}
+
 .movie-card {
     background-color: #2f2f2f;
     border-radius: 8px;
@@ -120,6 +139,7 @@ nav {
     background-color: #f84949a4;
     border-radius: 10px;
     width: fit-content;
+    margin: 5px;
 }
 
 .pagination {
