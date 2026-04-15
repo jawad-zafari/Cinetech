@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cinetech</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/Accueil.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
     <header>
@@ -21,35 +22,32 @@
         </div>
       </nav>
     </header>
-
-   <section id="hero-banner" class="hero">
-    <div class="hero-overlay">
-        <div class="hero-content">
-            <h1 id="hero-title">Loading...</h1>
-            <p id="hero-description"></p>
-            <a href="#" id="hero-link" class="hero-btn">Détails</a>
-        </div>
-    </div>
-</section>
+    <section class="section-title-1">
+      <h1>TOP 10 du mois</h1>
+    </section>
+  <section id="hero-carousel" class="hero-carousel-container">
+    
+    </section>
 
     <main>
       <section class="media-section">
-        <h2 class="section-title">Films Populaires</h2>
+        <h1 class="section-title">Films Populaires</h1>
         <div id="movieGrid" class="carousel-container"></div>
       </section>
 
       <section class="media-section">
-        <h2 class="section-title">Séries Populaires</h2>
+        <h1 class="section-title">Séries Populaires</h1>
         <div id="seriesGrid" class="carousel-container"></div>
       </section>
-      <div class="pagination">
-        <button id="prevBtn">Précédent</button>
-        <span id="pageNumber">1</span>
-        <button id="nextBtn">Suivant</button>
-      </div>
+      <section class="news-section">
+  <h2 class="section-title">Actualités & Sorties Prochaines</h2>
+  <div id="newsContainer" class="news-list">
+    </div>
+</section>
     </main>
-
+  
     <script type="module" src="dist/app.js"></script>
     <script type="module" src="dist/search.js"></script>
+    <script type="module" src="dist/banner.js"></script>
   </body>
 </html>
