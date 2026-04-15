@@ -1,0 +1,455 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #141414;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+.logo {
+    flex: 1; 
+    color: #e50914;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.search-box {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+}
+
+.search-box input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 15px;
+    border-radius: 20px; 
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: white;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.search-box input:focus {
+    background-color: #444;
+}
+.section-title-1 {
+   background-color: #ff000d5a;
+}
+.section-title-1 h1{
+    margin:10px;
+    font-size: large;
+    color: #d3d3d3;
+    font-weight: 300;
+    display: inline-block;
+    padding: 5px 15px;
+}
+.hero-carousel-container {
+    display: flex;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    height: 500px;
+    background-color: #111;
+    
+    scrollbar-width: thin; 
+    scrollbar-color: #e50914 #222; 
+}
+
+.hero-carousel-container::-webkit-scrollbar {
+    height: 10px; 
+}
+.hero-carousel-container::-webkit-scrollbar-track {
+    background: #222; 
+}
+.hero-carousel-container::-webkit-scrollbar-thumb {
+    background: #e50914; 
+    border-radius: 5px;
+}
+
+.hero-slide {
+    flex: 0 0 100%; 
+    scroll-snap-align: start; 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.hero-overlay {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 60%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
+
+.hero-content {
+    color: white;
+    max-width: 600px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-weight:200;
+}
+
+.hero-btn {
+    display: inline-block;
+    background-color: #e50914;
+    color: white;
+    font-weight: 100;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 15px 20px;
+}
+
+.logo {
+    flex: 1; 
+    color: #e50914;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.search-box {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+}
+
+.search-box input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 15px;
+    border-radius: 20px; 
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: white;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.search-box input:focus {
+    background-color: #444;
+}
+
+.menu {
+    flex: 1; 
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: capitalize;
+}
+
+.menu a:hover {
+    background-color: #e50914;
+    transform: scale(1.05);
+}
+
+.section-title {
+    margin: 30px 20px 10px;
+    font-weight: 300;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; 
+    gap: 20px;
+    padding: 20px;
+    scroll-behavior: smooth;
+}
+
+/* .carousel-container::-webkit-scrollbar {
+    display: none;
+} */
+
+.carousel-container .movie-card {
+    flex: 0 0 200px; 
+    scroll-snap-align: start; 
+}
+
+.movie-card {
+    background-color: #2f2f2f;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4); 
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.movie-card h3 {
+    padding: 10px 0 5px;
+    font-size: 18px;
+    font-weight: 200;
+}
+.movie-card p {
+    font-size: 16px;
+    color: #ffffff;
+    padding:5px;
+    background-color: #f9040457;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 5px auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.pagination button {
+    padding: 10px 25px;
+    cursor: pointer;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #b20710;
+}
+
+.pagination span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.search-box {
+    position: relative;
+}
+
+.suggestion-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-top: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    display: none;
+}
+
+.suggestion-dropdown li {
+    padding: 12px 15px;
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.suggestion-dropdown li:hover {
+    background-color: #e50914;
+    color: white;
+}
+/* Style pour la section des actualités avec de grandes images */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.news-item {
+    display: flex;
+    background: #1f1f1f;
+    border-radius: 12px;
+    overflow: hidden; 
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.news-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+}
+.news-section{
+    margin: 15px;
+}
+
+.news-image {
+    flex: 0 0 200px;
+    height: 300px;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.news-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.news-date {
+    font-size: 0.9rem;
+    color: #e50914;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.news-body h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.news-body p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+
+
+.footer {
+    background-color: #0b0b0b;
+    color: #ffffff;
+    padding: 60px 0 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 30px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    color: #e50914; 
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #bbbbbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+    padding-left: 5px; 
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 40px;
+    border-top: 1px solid #222;
+    color: #777;
+    font-size: 14px;
+}
+
+.social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.1);
+    margin-right: 10px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+.social-links a:hover {
+    background-color: #e50914;
+}
