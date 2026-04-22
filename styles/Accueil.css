@@ -47,13 +47,20 @@ header {
     background-color: #444;
 }
 .section-title-1 {
-   background-color: #ff000d5a;
+    position: absolute;
+    z-index: 100;
+    left: 20px;
+    border: 2px solid rgb(255, 255, 0);
+    /* border-radius: 10px; */
+    margin:15px;
+    width: fit-content;
 }
 .section-title-1 h1{
+    font-family: 'Courier New', Courier, monospace;
     margin:10px;
     font-size: large;
-    color: #d3d3d3;
-    font-weight: 300;
+    color: rgb(255, 251, 0);
+    /* font-weight: 500; */
     display: inline-block;
     padding: 5px 15px;
 }
@@ -64,8 +71,6 @@ header {
     height: 500px;
     background-color: #111;
     
-    scrollbar-width: thin; 
-    scrollbar-color: #e50914 #222; 
 }
 
 .hero-carousel-container::-webkit-scrollbar {
@@ -110,16 +115,24 @@ header {
     font-weight:200;
 }
 
+
+
 .hero-btn {
     display: inline-block;
     background-color: #e50914;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: 100;
     padding: 10px 25px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
     margin-top: 20px;
+    transition: all 0.3s ease;
+}
+.hero-btn:hover {
+    box-shadow: 0 10px 15px rgba(255, 0, 13, 0.607);
+    transform: scale(1.05);
+
 }
 nav {
     display: flex;
@@ -130,13 +143,14 @@ nav {
     padding: 15px 20px;
 }
 
-.logo {
+.logo a {
     flex: 1; 
     color: #e50914;
     font-size: 28px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-decoration: none;
 }
 
 .search-box {
@@ -359,10 +373,10 @@ nav {
 }
 
 .news-date {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: #e50914;
     margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: 200;
 }
 
 .news-body h3 {
