@@ -89,3 +89,51 @@ export async function getPopularSeries(): Promise<void> {
     }
 }
 
+
+// Récupère les sorties cinématographiques futures
+
+export async function getMovieNews(): Promise<void> {
+    // la date du jour
+    const today = new Date().toISOString().split('T')[0];
+
+    try {
+        const response = await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=fr-FR`);
+        const data = await response.json();
+
+        // Filtrer les résultats : uniquement les films plus anciens qu'aujourd'hui
+        const futureMovies = data.results.filter((movie: any) => {
+            return movie.release_date && movie.release_date > today!;
+        });
+        //les 6 premiers films dans la liste corrigée
+        const newsItems = futureMovies.slice(0, 6);
+
+        const container = document.getElementById('newsContainer');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        newsItems.forEach((movie: any) => {
+            const article = document.createElement('div');
+            article.className = 'news-item';
+            
+            article.innerHTML = `
+                <div class="news-image">
+                    <img src="${IMAGE_BASE_URL}${movie.poster_path}" alt="${movie.title}">
+                </div>
+                <div class="news-body">
+                    <div class="news-date">Sortie prévue : ${movie.release_date}</div>
+                    <h3>${movie.title}</h3>
+                    <p>${movie.overview.substring(0, 200)}...</p>
+                </div>
+            `;
+
+            article.addEventListener('click', () => {
+                window.location.href = `details.html?id=${movie.id}&type=movie`;
+            });
+            
+            container.appendChild(article);
+        });
+    } catch (error) {
+        console.error("Erreur lors du chargement des actualités:", error);
+    }
+}
