@@ -2,6 +2,10 @@ import { API_KEY, BASE_URL } from './config.js';
 import type { Movie } from './types.js';
 import { getPopularMovies } from './app.js';
 
+
+// pour contrôler le temps de recherche
+let searchTimeout: ReturnType<typeof setTimeout>;
+
 const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 
 const suggestionBox = document.createElement('ul');
@@ -65,20 +69,20 @@ function showSuggestions(items: any[]): void {
 
        
 
-searchInput.addEventListener('input', (event) => {
-    const target = event.target as HTMLInputElement;
-    const searchTerm = target.value.trim();
+if (searchInput) {
+    searchInput.addEventListener('input', (event) => {
+        const target = event.target as HTMLInputElement;
+        const searchTerm = target.value.trim();
 
-    if (searchTerm.length > 0) {
-        fetchSearchSuggestions(searchTerm);
-    } else {
-        suggestionBox.style.display = "none";
-        getPopularMovies();
-    }
-});
+        // Effacer le minuteur précédent
+        clearTimeout(searchTimeout);
 
-document.addEventListener('click', (event) => {
-    if (event.target !== searchInput && event.target !== suggestionBox) {
-        suggestionBox.style.display = "none";
-    }
-});
+        if (searchTerm.length > 2) { 
+            searchTimeout = setTimeout(() => {
+                fetchSearchSuggestions(searchTerm);
+            }, 500);
+        } else {
+            suggestionBox.style.display = "none";
+        }
+    });
+}
