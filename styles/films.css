@@ -1,0 +1,56 @@
+/* Style de la page catalogue */
+.catalog-page {
+    padding: 40px 5%;
+    min-height: 80vh;
+}
+
+.page-title {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    border-left: 4px solid #e50914;
+    padding-left: 15px;
+}
+
+/* Grille complète pour afficher beaucoup d'éléments */
+.full-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* Style de la pagination */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 40px;
+}
+
+.pagination-controls button {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination-controls button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #f40612;
+}
+
+#page-indicator {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
