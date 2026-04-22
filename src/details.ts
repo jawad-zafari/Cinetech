@@ -95,3 +95,33 @@ function updateUI(data: any, creditsData: any): void {
         genresContainer.innerHTML = data.genres.map((g: any) => `<span>${g.name}</span>`).join('');
     }
 }
+
+/**
+ * Récupère et affiche les acteurs principaux
+ */
+function loadCast(creditsData: any): void {
+    const castGrid = document.getElementById('cast-grid');
+    if (!castGrid || !creditsData.cast) return;
+
+    castGrid.innerHTML = '';
+
+    // Afficher les 7 premiers acteurs
+    creditsData.cast.slice(0, 7).forEach((actor: any) => {
+        const actorCard = document.createElement('div');
+        actorCard.className = 'actor-card';
+        
+        // Gestion des acteurs sans photo de profil
+        const imageSrc = actor.profile_path 
+            ? `${IMAGE_BASE_URL}${actor.profile_path}` 
+            : 'https://via.placeholder.com/150x225?text=Image+non+disponible';
+
+        actorCard.innerHTML = `
+            <img src="${imageSrc}" alt="${actor.name}">
+            <p><strong>${actor.name}</strong></p>
+            <p>${actor.character}</p>
+        `;
+        castGrid.appendChild(actorCard);
+    });
+}
+
+loadDetails();
