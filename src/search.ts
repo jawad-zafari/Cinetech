@@ -63,26 +63,7 @@ function showSuggestions(items: any[]): void {
     });
 }
 
-
-    suggestionBox.style.display = "block";
-
-
-    item.forEach((item: any) => {
-        const li = document.createElement('li');
-
-
-        const year = item.release_date ? ` (${item.release_date.substring(0, 4)})` : '';
-        li.textContent = item.title + year;
-        
-        li.addEventListener('click', () => {
-            suggestionBox.style.display = "none";
-            searchInput.value = item.title;
-            window.location.href = `details.html?id=${item.id}&type=${item.media_type}`;
-        });
-
-        suggestionBox.appendChild(li);
-    });
-}
+       
 
 searchInput.addEventListener('input', (event) => {
     const target = event.target as HTMLInputElement;
