@@ -1,3 +1,32 @@
+/* Style du bouton Favoris */
+.btn-favorite {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.btn-favorite:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-favorite.active {
+    background-color: #e50914; 
+    border-color: #e50914;
+}
+
+.heart-icon {
+    font-size: 1.2rem;
+}
+
 /* Style du bouton de retour */
 .btn-back {
     position: absolute;
