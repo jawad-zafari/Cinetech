@@ -82,4 +82,10 @@ if (searchInput) {
             suggestionBox.style.display = "none";
         }
     });
+    // Fermer le menu si on clique en dehors
+document.addEventListener('click', (event) => {
+    if (searchInput && event.target !== searchInput && event.target !== suggestionBox) {
+        suggestionBox.style.display = "none";
+    }
+});
 }
