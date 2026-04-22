@@ -99,3 +99,6 @@ if (btnNext) {
         }
     });
 }
+
+
+loadMovies(currentPage);
