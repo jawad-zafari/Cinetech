@@ -137,3 +137,7 @@ export async function getMovieNews(): Promise<void> {
         console.error("Erreur lors du chargement des actualités:", error);
     }
 }
+
+getPopularSeries();
+getPopularMovies();
+getMovieNews();
