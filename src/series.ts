@@ -40,3 +40,11 @@ async function loadMovies(page: number): Promise<void> {
                     <p>Année : ${year}</p>
                 </div>
             `;
+
+            // Redirection vers les détails
+            card.addEventListener('click', () => {
+                window.location.href = `details.html?id=${serie.id}&type=tv`;
+            });
+
+            grid.appendChild(card);
+        });
