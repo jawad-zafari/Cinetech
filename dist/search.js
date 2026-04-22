@@ -1,9 +1,10 @@
 import { API_KEY, BASE_URL } from './config.js';
-import { getPopularMovies } from './app.js';
+// pour contrôler le temps de recherche
+let searchTimeout;
 const searchInput = document.getElementById('searchInput');
 const suggestionBox = document.createElement('ul');
 suggestionBox.className = "suggestion-dropdown";
-if (searchInput.parentElement) {
+if (searchInput && searchInput.parentElement) {
     searchInput.parentElement.appendChild(suggestionBox);
 }
 async function fetchSearchSuggestions(query) {
@@ -44,32 +45,26 @@ function showSuggestions(items) {
         suggestionBox.appendChild(li);
     });
 }
-suggestionBox.style.display = "block";
-item.forEach((item) => {
-    const li = document.createElement('li');
-    const year = item.release_date ? ` (${item.release_date.substring(0, 4)})` : '';
-    li.textContent = item.title + year;
-    li.addEventListener('click', () => {
-        suggestionBox.style.display = "none";
-        searchInput.value = item.title;
-        window.location.href = `details.html?id=${item.id}&type=${item.media_type}`;
+if (searchInput) {
+    searchInput.addEventListener('input', (event) => {
+        const target = event.target;
+        const searchTerm = target.value.trim();
+        // Effacer le minuteur précédent
+        clearTimeout(searchTimeout);
+        if (searchTerm.length > 2) {
+            searchTimeout = setTimeout(() => {
+                fetchSearchSuggestions(searchTerm);
+            }, 500);
+        }
+        else {
+            suggestionBox.style.display = "none";
+        }
     });
-    suggestionBox.appendChild(li);
-});
-searchInput.addEventListener('input', (event) => {
-    const target = event.target;
-    const searchTerm = target.value.trim();
-    if (searchTerm.length > 0) {
-        fetchSearchSuggestions(searchTerm);
-    }
-    else {
-        suggestionBox.style.display = "none";
-        getPopularMovies();
-    }
-});
-document.addEventListener('click', (event) => {
-    if (event.target !== searchInput && event.target !== suggestionBox) {
-        suggestionBox.style.display = "none";
-    }
-});
+    // Fermer le menu si on clique en dehors
+    document.addEventListener('click', (event) => {
+        if (searchInput && event.target !== searchInput && event.target !== suggestionBox) {
+            suggestionBox.style.display = "none";
+        }
+    });
+}
 //# sourceMappingURL=search.js.map
