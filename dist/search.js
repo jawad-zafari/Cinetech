@@ -20,25 +20,42 @@ async function fetchSearchSuggestions(query) {
         console.error("Erreur lors de la recherche :", error);
     }
 }
-function showSuggestions(movies) {
+function showSuggestions(items) {
     suggestionBox.innerHTML = "";
-    if (movies.length === 0) {
+    if (items.length === 0) {
         suggestionBox.style.display = "none";
         return;
     }
     suggestionBox.style.display = "block";
-    movies.forEach((movie) => {
+    items.forEach((item) => {
         const li = document.createElement('li');
-        const year = movie.release_date ? ` (${movie.release_date.substring(0, 4)})` : '';
-        li.textContent = movie.title + year;
+        // Reconnaissance du nom et de la date basée sur un film ou une série
+        const title = item.title || item.name;
+        const rawDate = item.release_date || item.first_air_date;
+        const year = rawDate ? ` (${rawDate.substring(0, 4)})` : '';
+        const typeLabel = item.media_type === 'movie' ? '🎬' : '📺';
+        li.textContent = `${typeLabel} ${title}${year}`;
         li.addEventListener('click', () => {
             suggestionBox.style.display = "none";
-            searchInput.value = movie.title;
-            window.location.href = `details.html?id=${movie.id}`;
+            searchInput.value = title;
+            // ajouter un type de contenu au lien de la page de détail
+            window.location.href = `details.html?id=${item.id}&type=${item.media_type}`;
         });
         suggestionBox.appendChild(li);
     });
 }
+suggestionBox.style.display = "block";
+item.forEach((item) => {
+    const li = document.createElement('li');
+    const year = item.release_date ? ` (${item.release_date.substring(0, 4)})` : '';
+    li.textContent = item.title + year;
+    li.addEventListener('click', () => {
+        suggestionBox.style.display = "none";
+        searchInput.value = item.title;
+        window.location.href = `details.html?id=${item.id}&type=${item.media_type}`;
+    });
+    suggestionBox.appendChild(li);
+});
 searchInput.addEventListener('input', (event) => {
     const target = event.target;
     const searchTerm = target.value.trim();

@@ -30,30 +30,54 @@ async function fetchSearchSuggestions(query: string): Promise<void> {
     }
 }
 
-function showSuggestions(movies: Movie[]): void {
+function showSuggestions(items: any[]): void {
     suggestionBox.innerHTML = "";
 
-
-    if (movies.length === 0) {
+    if (items.length === 0) {
         suggestionBox.style.display = "none";
         return;
     }
+
+    suggestionBox.style.display = "block";
+
+    items.forEach((item: any) => {
+        const li = document.createElement('li');
+
+        // Reconnaissance du nom et de la date basée sur un film ou une série
+        const title = item.title || item.name;
+        const rawDate = item.release_date || item.first_air_date;
+        const year = rawDate ? ` (${rawDate.substring(0, 4)})` : '';
+        
+        const typeLabel = item.media_type === 'movie' ? '🎬' : '📺';
+
+        li.textContent = `${typeLabel} ${title}${year}`;
+        
+        li.addEventListener('click', () => {
+            suggestionBox.style.display = "none";
+            searchInput.value = title;
+            // ajouter un type de contenu au lien de la page de détail
+            window.location.href = `details.html?id=${item.id}&type=${item.media_type}`;
+        });
+
+        suggestionBox.appendChild(li);
+    });
+}
 
 
     suggestionBox.style.display = "block";
 
 
-    movies.forEach((movie: Movie) => {
+    item.forEach((item: any) => {
         const li = document.createElement('li');
 
 
-        const year = movie.release_date ? ` (${movie.release_date.substring(0, 4)})` : '';
-        li.textContent = movie.title + year;
+        const year = item.release_date ? ` (${item.release_date.substring(0, 4)})` : '';
+        li.textContent = item.title + year;
         
         li.addEventListener('click', () => {
             suggestionBox.style.display = "none";
-            searchInput.value = movie.title;
-            window.location.href = `details.html?id=${movie.id}`;
+            searchInput.value = item.title;
+            window.location.href = `details.html?id=${item.id}&type=${item.media_type}`;
         });
 
         suggestionBox.appendChild(li);
