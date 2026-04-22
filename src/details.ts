@@ -41,3 +41,57 @@ async function loadDetails(): Promise<void> {
         console.error("Erreur lors du chargement des détails:", error);
     }
 }
+
+/**
+ * Injecte les données dans le DOM
+ */
+function updateUI(data: any, creditsData: any): void {
+    const hero = document.getElementById('movie-hero');
+    const title = document.getElementById('movie-title');
+    const poster = document.getElementById('movie-poster') as HTMLImageElement;
+    const overview = document.getElementById('movie-overview');
+    
+    const yearElement = document.getElementById('movie-year');
+    const countryElement = document.getElementById('movie-country');
+    const directorElement = document.getElementById('movie-director');
+
+    // Image de fond (Backdrop)
+    if (hero && data.backdrop_path) {
+        hero.style.backgroundImage = `linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.4)), url(${IMAGE_BASE_URL}${data.backdrop_path})`;
+    }
+    
+    // Titre, Poster et Synopsis
+    if (title) title.textContent = data.title || data.name || "Titre inconnu";
+    if (poster && data.poster_path) poster.src = `${IMAGE_BASE_URL}${data.poster_path}`;
+    if (overview) overview.textContent = data.overview || "Pas de description disponible.";
+
+    // Année de sortie
+    if (yearElement) {
+        const date = data.release_date || data.first_air_date;
+        yearElement.textContent = date ? date.substring(0, 4) : "Inconnue";
+    }
+
+    // Pays d'origine
+    if (countryElement) {
+        const country = data.production_countries?.[0]?.name || data.origin_country?.[0] || "Inconnu";
+        countryElement.textContent = country;
+    }
+
+    // Réalisateur (pour les films) ou Créateur (pour les séries)
+    if (directorElement) {
+        let directorName = "Inconnu";
+        if (type === 'movie' && creditsData.crew) {
+            const director = creditsData.crew.find((member: any) => member.job === 'Director');
+            if (director) directorName = director.name;
+        } else if (type === 'tv' && data.created_by && data.created_by.length > 0) {
+            directorName = data.created_by[0].name;
+        }
+        directorElement.textContent = directorName;
+    }
+
+    // Genres
+    const genresContainer = document.getElementById('movie-genres');
+    if (genresContainer && data.genres) {
+        genresContainer.innerHTML = data.genres.map((g: any) => `<span>${g.name}</span>`).join('');
+    }
+}
