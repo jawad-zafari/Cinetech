@@ -145,10 +145,11 @@ function toggleFavorite(data, type) {
     let favorites = getFavorites();
     const id = data.id.toString();
     const index = favorites.findIndex(fav => fav.id === id);
+    const btnFav = document.getElementById('btn-favorite');
     if (index > -1) {
         // Si déjà présent, on le retire
         favorites.splice(index, 1);
-        showToast("Retiré des favoris", false);
+        showToast("Retiré des favoris", false, btnFav);
     }
     else {
         // Sinon, on l'ajoute avec les infos nécessaires pour la page Favoris
@@ -160,7 +161,7 @@ function toggleFavorite(data, type) {
             vote_average: data.vote_average
         };
         favorites.push(newFavorite);
-        showToast("Ajouté aux favoris", true);
+        showToast("Ajouté aux favoris", true, btnFav);
     }
     localStorage.setItem('cinetech_favorites', JSON.stringify(favorites));
     checkFavoriteStatus(id);
@@ -168,10 +169,16 @@ function toggleFavorite(data, type) {
 /**
  * Affiche une notification temporaire (Toast)
  */
-function showToast(message, isAdded) {
+function showToast(message, isAdded, targetElement) {
     const toast = document.createElement('div');
     toast.className = `toast-notification ${isAdded ? 'add' : 'remove'}`;
     toast.textContent = message;
+    // ---calculer les coordonnées du bouton ---
+    if (targetElement) {
+        const rect = targetElement.getBoundingClientRect();
+        toast.style.left = `${rect.left + (rect.width / 2)}px`;
+        toast.style.top = `${rect.top - 10}px`;
+    }
     document.body.appendChild(toast);
     // Déclencher l'animation d'apparition
     setTimeout(() => {
