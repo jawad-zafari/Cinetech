@@ -30,12 +30,17 @@ async function loadDetails(): Promise<void> {
         const creditsData = await creditsResponse.json();
 
         if (data.success === false) return;
-
         // 3. Mise à jour de l'interface principale
         updateUI(data, creditsData);
 
         // 4. Récupération et affichage du casting
         loadCast(creditsData);
+
+        if (id) {
+            checkFavoriteStatus(id);
+            const btnFav = document.getElementById('btn-favorite');
+            btnFav?.addEventListener('click', () => toggleFavorite(data, type));
+        }
 
     } catch (error) {
         console.error("Erreur lors du chargement des détails:", error);
@@ -123,5 +128,62 @@ function loadCast(creditsData: any): void {
         castGrid.appendChild(actorCard);
     });
 }
+
+
+// --- Gestion des Favoris ---
+
+/**
+ * Récupère la liste des favoris depuis le LocalStorage
+ */
+function getFavorites(): any[] {
+    const favs = localStorage.getItem('cinetech_favorites');
+    return favs ? JSON.parse(favs) : [];
+}
+
+/**
+ * Vérifie si l'œuvre actuelle est déjà en favoris et met à jour le bouton
+ */
+function checkFavoriteStatus(id: string): void {
+    const btnFav = document.getElementById('btn-favorite');
+    if (!btnFav) return;
+
+    const favorites = getFavorites();
+    const isFavorite = favorites.some(fav => fav.id === id);
+
+    if (isFavorite) {
+        btnFav.classList.add('active');
+        btnFav.innerHTML = '<span class="heart-icon">❤️</span>';
+    } else {
+        btnFav.classList.remove('active');
+        btnFav.innerHTML = '<span class="heart-icon">♡</span>';
+    }
+}
+
+/**
+ * Ajoute ou retire l'œuvre de la liste des favoris
+ */
+function toggleFavorite(data: any, type: string): void {
+    let favorites = getFavorites();
+    const id = data.id.toString();
+    const index = favorites.findIndex(fav => fav.id === id);
+
+    if (index > -1) {
+        // Si déjà présent, on le retire
+        favorites.splice(index, 1);
+    } else {
+        // Sinon, on l'ajoute avec les infos nécessaires pour la page Favoris
+        favorites.push({
+            id: id,
+            type: type,
+            title: data.title || data.name,
+            poster_path: data.poster_path,
+            vote_average: data.vote_average
+        });
+    }
+
+    localStorage.setItem('cinetech_favorites', JSON.stringify(favorites));
+    checkFavoriteStatus(id);
+}
+
 
 loadDetails();
