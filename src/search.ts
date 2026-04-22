@@ -1,7 +1,4 @@
 import { API_KEY, BASE_URL } from './config.js';
-import type { Movie } from './types.js';
-import { getPopularMovies } from './app.js';
-
 
 // pour contrôler le temps de recherche
 let searchTimeout: ReturnType<typeof setTimeout>;
