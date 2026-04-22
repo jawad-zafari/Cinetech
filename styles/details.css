@@ -1,23 +1,31 @@
-.retour a {
-    flex: 1; 
-    color: #ffffff;
-    font-size: 28px;
-    font-weight: 200;
-    /* text-transform: uppercase; */
-    text-decoration: none;
-    letter-spacing: 2px;
+/* Style du bouton de retour */
+.btn-back {
+    position: absolute;
+    top: 20px; 
+    left: 50px; 
+    z-index: 10;
+    margin: 0;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: lighter;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-.retour a:hover {
+
+.btn-back:hover {
     color: #e50914;
+    transform: translateX(-5px); 
     text-decoration: underline;
 }
+
 .movie-hero {
+    position: relative; 
     min-height: 80vh;
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
-    padding: 50px;
+    padding: 100px;
 }
 
 .hero-content-wrapper {
