@@ -46,3 +46,46 @@ export function displayMovies(movies: Movie[]): void {
         movieGrid.appendChild(movieCard);
     });
 }
+
+// Récupère et affiche les séries télévisées populaires dans le conteneur dédié
+export async function getPopularSeries(): Promise<void> {
+    try {
+        const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=fr-FR`);
+        const data = await response.json();
+        const series: Movie[] = data.results;
+
+        const seriesGrid = document.getElementById('seriesGrid');
+        if (!seriesGrid) return;
+
+        seriesGrid.innerHTML = ''; 
+
+        series.forEach(serie => {
+            const card = document.createElement('div');
+            card.className = 'movie-card';
+
+            // Utilisation de "name"
+            const displayTitle = serie.name ? serie.name : "Titre inconnu";
+            
+            // Extraction de l'année 
+            const year = serie.first_air_date ? ` ${serie.first_air_date.substring(0, 4)}` : '';
+
+            card.innerHTML = `
+                <img src="${IMAGE_BASE_URL}${serie.poster_path}" alt="${displayTitle}">
+                <div class="movie-info">
+                    <h3 class="movie-title">${displayTitle}</h3>
+                    <p>Année : ${year}</p>
+                </div>
+            `;
+            
+            // Redirection vers la page de détails
+            card.addEventListener('click', () => {
+                window.location.href = `details.html?id=${serie.id}&type=tv `;
+            });
+
+            seriesGrid.appendChild(card);
+        });
+    } catch (error) {
+        console.error("Erreur lors de la récupération des séries:", error);
+    }
+}
+
