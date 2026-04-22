@@ -20,3 +20,29 @@ export async function getPopularMovies(): Promise<void> {
         console.error("Error fetching data:", error);
     }
 }
+
+export function displayMovies(movies: Movie[]): void {
+    movieGrid.innerHTML = ""; 
+
+    movies.forEach((movie: Movie) => {
+        const movieCard = document.createElement('div');
+
+        movieCard.className = "movie-card";
+        
+        
+        const imageUrl = movie.poster_path 
+            ? `${IMAGE_BASE_URL}${movie.poster_path}` 
+            : 'https://via.placeholder.com/500x750?text=No+Image';
+
+        movieCard.innerHTML = `
+            <img src="${imageUrl}" alt="${movie.title}">
+            <h3>${movie.title}</h3>
+
+            <p>Année : ${movie.release_date ? ` ${movie.release_date.substring(0, 4)}` : ''}</p>
+        `;
+       movieCard.addEventListener('click', () => {
+    window.location.href = `details.html?id=${movie.id}&type=movie`;
+});
+        movieGrid.appendChild(movieCard);
+    });
+}
