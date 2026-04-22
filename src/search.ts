@@ -8,7 +8,7 @@ const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 const suggestionBox = document.createElement('ul');
 suggestionBox.className = "suggestion-dropdown";
 
-if (searchInput.parentElement) {
+if (searchInput && searchInput.parentElement) {
     searchInput.parentElement.appendChild(suggestionBox);
 }
 
