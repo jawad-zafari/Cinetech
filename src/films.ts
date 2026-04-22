@@ -40,3 +40,17 @@ async function loadMovies(page: number): Promise<void> {
                     <p>Année : ${year}</p>
                 </div>
             `;
+
+            // Enregistrement de la position
+
+card.addEventListener('click', () => {
+    // Stocker la position
+    const scrollPos = window.scrollY.toString();
+    sessionStorage.setItem('last_scroll_pos', scrollPos);
+    
+    // Redirection vers la page de détails
+    window.location.href = `details.html?id=${movie.id}&type=movie`;
+});
+
+            grid.appendChild(card);
+        });
