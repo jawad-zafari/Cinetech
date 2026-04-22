@@ -8,14 +8,16 @@ if (searchInput.parentElement) {
 }
 async function fetchSearchSuggestions(query) {
     try {
-        const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=fr-FR&query=${query}`;
+        // multi pour la recherche combinée
+        const url = `${BASE_URL}/search/multi?api_key=${API_KEY}&language=fr-FR&query=${query}`;
         const response = await fetch(url);
         const data = await response.json();
-        const movies = data.results;
-        showSuggestions(movies);
+        // Filtrer les résultats pour afficher uniquement les films et séries (supprimer les acteurs des résultats)
+        const results = data.results.filter((item) => item.media_type === 'movie' || item.media_type === 'tv');
+        showSuggestions(results.slice(0, 10));
     }
     catch (error) {
-        console.error("Erreur lors de l'obtention des résultats :", error);
+        console.error("Erreur lors de la recherche :", error);
     }
 }
 function showSuggestions(movies) {
