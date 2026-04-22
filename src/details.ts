@@ -170,20 +170,48 @@ function toggleFavorite(data: any, type: string): void {
     if (index > -1) {
         // Si déjà présent, on le retire
         favorites.splice(index, 1);
+        showToast("Retiré des favoris", false);
     } else {
         // Sinon, on l'ajoute avec les infos nécessaires pour la page Favoris
-        favorites.push({
+       const newFavorite = {
             id: id,
             type: type,
             title: data.title || data.name,
             poster_path: data.poster_path,
             vote_average: data.vote_average
-        });
+        };
+        favorites.push(newFavorite);
+        showToast("Ajouté aux favoris", true);
     }
 
     localStorage.setItem('cinetech_favorites', JSON.stringify(favorites));
     checkFavoriteStatus(id);
 }
+
+/**
+ * Affiche une notification temporaire (Toast)
+ */
+function showToast(message: string, isAdded: boolean): void {
+    const toast = document.createElement('div');
+    toast.className = `toast-notification ${isAdded ? 'add' : 'remove'}`;
+    toast.textContent = message;
+
+    document.body.appendChild(toast);
+
+    // Déclencher l'animation d'apparition
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+
+    // Faire disparaître la notification
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+
 
 
 loadDetails();

@@ -1,3 +1,34 @@
+/* Style pour la notification Toast */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Animation d'apparition */
+.toast-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Couleurs selon l'action */
+.toast-notification.add {
+    background-color: #4CAF50;
+}
+
+.toast-notification.remove {
+    background-color: #e50914; 
+}
 /* Style du bouton Favoris */
 .btn-favorite {
     background-color: rgba(255, 255, 255, 0.1);
