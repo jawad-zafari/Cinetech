@@ -5,7 +5,7 @@
     left: 50px; 
     z-index: 10;
     margin: 0;
-    color: white;
+    color: rgb(255, 0, 0);
     font-size: 1.2rem;
     font-weight: lighter;
     cursor: pointer;
@@ -13,7 +13,7 @@
 }
 
 .btn-back:hover {
-    color: #e50914;
+    color: #ffffff;
     transform: translateX(-5px); 
     text-decoration: underline;
 }
