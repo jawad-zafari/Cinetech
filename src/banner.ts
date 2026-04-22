@@ -45,5 +45,8 @@ export async function loadSimpleScrollBanner(): Promise<void> {
     }
 }
 
+// Initialisation
+loadSimpleScrollBanner();
+
 
 
