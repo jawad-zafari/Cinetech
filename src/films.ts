@@ -60,8 +60,7 @@ async function loadMovies(page: number): Promise<void> {
                 sessionStorage.removeItem('last_scroll_pos');
             }, 100);
         } else {
-            // S'il s'agit d'un changement de page normal, on remonte en haut
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
     } catch (error) {
@@ -84,6 +83,8 @@ function updatePaginationUI(): void {
 if (btnPrev) {
     btnPrev.addEventListener('click', () => {
         if (currentPage > 1) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
             currentPage--;
             sessionStorage.setItem('savedFilmPage', currentPage.toString());
             loadMovies(currentPage);
@@ -94,6 +95,8 @@ if (btnPrev) {
 if (btnNext) {
     btnNext.addEventListener('click', () => {
         if (currentPage < totalPages) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
             currentPage++;
             sessionStorage.setItem('savedFilmPage', currentPage.toString());
             loadMovies(currentPage);
