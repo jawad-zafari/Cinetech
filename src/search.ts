@@ -74,10 +74,10 @@ if (searchInput) {
         // Effacer le minuteur précédent
         clearTimeout(searchTimeout);
 
-        if (searchTerm.length > 2) { 
+        if (searchTerm.length > 1) { 
             searchTimeout = setTimeout(() => {
                 fetchSearchSuggestions(searchTerm);
-            }, 500);
+            }, 300);
         } else {
             suggestionBox.style.display = "none";
         }
