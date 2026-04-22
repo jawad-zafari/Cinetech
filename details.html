@@ -8,30 +8,32 @@
     <link rel="stylesheet" href="styles/details.css">
 </head>
 <body>
-    <header>
+    <!-- <header>
         <nav>
-            <div class="retour"><a href="index.html">⬅ Retour</a></div>
+            <div class="retour"><a href="index.html">Cinetech</a></div>
         </nav>
-    </header>
+    </header> -->
 
     <main id="details-container">
         <section id="movie-hero" class="movie-hero">
+        <h1 id="btn-back" class="btn-back">← Retour</h1>
             <div class="hero-content-wrapper">
                 <div class="poster-container">
                     <img id="movie-poster" src="" alt="Poster">
                 </div>
-                <div class="info-container">
-                    <h1 id="movie-title">Chargement...</h1>
-                    <p class="tagline" id="movie-tagline"></p>
-                    <div class="meta-info">
-                        <span id="movie-date"></span>
-                        <span id="movie-runtime"></span>
-                        <span id="movie-rating"></span>
-                    </div>
-                    <div class="genres" id="movie-genres"></div>
-                    <h3>Synopsis</h3>
-                    <p id="movie-overview"></p>
-                </div>
+               <div class="info-container">
+    <h1 id="movie-title">Chargement...</h1>
+    
+    <div class="movie-meta-details">
+        <p><strong>Année :</strong> <span id="movie-year"></span></p>
+        <p><strong>Pays d'origine :</strong> <span id="movie-country"></span></p>
+        <p><strong>Réalisateur / Créateur :</strong> <span id="movie-director"></span></p>
+    </div>
+
+    <div class="genres" id="movie-genres"></div>
+    <h3>Synopsis</h3>
+    <p id="movie-overview"></p>
+</div>
             </div>
         </section>
 
