@@ -54,3 +54,48 @@ card.addEventListener('click', () => {
 
             grid.appendChild(card);
         });
+
+        // Mise à jour de l'interface de pagination
+        updatePaginationUI();
+        
+        // Remonter en haut de la page de manière fluide après le chargemen
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (error) {
+        console.error("Erreur lors du chargement des films:", error);
+    }
+}
+
+
+//  Gère l'état des boutons de pagination (activé/désactivé)
+
+function updatePaginationUI(): void {
+    if (pageIndicator) {
+        pageIndicator.textContent = `Page ${currentPage} sur ${totalPages}`;
+    }
+
+    // Désactiver "Précédent" si on est sur la première page
+    if (btnPrev) btnPrev.disabled = currentPage === 1;
+    
+    // Désactiver "Suivant" si on est sur la dernière page
+    if (btnNext) btnNext.disabled = currentPage === totalPages;
+}
+
+// Événements pour les boutons de pagination
+if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            loadMovies(currentPage);
+        }
+    });
+}
+
+if (btnNext) {
+    btnNext.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            loadMovies(currentPage);
+        }
+    });
+}
