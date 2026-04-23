@@ -22,7 +22,8 @@ export async function initComments(id: string, type: string): Promise<void> {
 async function loadComments(id: string, type: string, container: HTMLElement): Promise<void> {
     try {
         // Obtenir des commentaires de l'API
-const response = await fetch(`${BASE_URL}/${type}/${id}/reviews?api_key=${API_KEY}`);        const data = await response.json();
+        const response = await fetch(`${BASE_URL}/${type}/${id}/reviews?api_key=${API_KEY}`);        
+        const data = await response.json();
         const apiComments = data.results || [];
 
         // Obtenir les commentaires de LocalStorage
@@ -32,11 +33,33 @@ const response = await fetch(`${BASE_URL}/${type}/${id}/reviews?api_key=${API_KE
         container.innerHTML = '';
 
        
+
     } catch (error) {
         console.error("Erreur comments:", error);
     }
 }
 
+/**
+ * Crée le HTML pour un commentaire ---
+ */
+function createCommentElement(comment: any, isLocal: boolean): HTMLElement {
+    const div = document.createElement('div');
+    div.className = `comment-item ${isLocal ? 'local-comment' : ''}`;
+    
+    // Déterminer l'auteur et la date selon la source (Local ou API)
+    const author = comment.author;
+    const content = comment.content;
+    const date = isLocal ? comment.date : new Date(comment.created_at).toLocaleDateString('fr-FR');
+
+    div.innerHTML = `
+        <div class="comment-header">
+            <strong>${author} ${isLocal ? '(Vous)' : ''}</strong>
+            <span>${date}</span>
+        </div>
+        <p class="comment-content">${content}</p>
+    `;
+    return div;
+}
 
 function handleCommentSubmit(id: string, type: string, container: HTMLElement) {
     const input = document.getElementById('comment-input') as HTMLTextAreaElement;

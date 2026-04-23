@@ -30,6 +30,25 @@ async function loadComments(id, type, container) {
         console.error("Erreur comments:", error);
     }
 }
+/**
+ * Crée le HTML pour un commentaire ---
+ */
+function createCommentElement(comment, isLocal) {
+    const div = document.createElement('div');
+    div.className = `comment-item ${isLocal ? 'local-comment' : ''}`;
+    // Déterminer l'auteur et la date selon la source (Local ou API)
+    const author = comment.author;
+    const content = comment.content;
+    const date = isLocal ? comment.date : new Date(comment.created_at).toLocaleDateString('fr-FR');
+    div.innerHTML = `
+        <div class="comment-header">
+            <strong>${author} ${isLocal ? '(Vous)' : ''}</strong>
+            <span>${date}</span>
+        </div>
+        <p class="comment-content">${content}</p>
+    `;
+    return div;
+}
 function handleCommentSubmit(id, type, container) {
     const input = document.getElementById('comment-input');
     const text = input.value.trim();
