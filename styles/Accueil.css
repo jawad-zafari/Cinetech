@@ -204,7 +204,7 @@ nav {
     flex: 1; 
     display: flex;
     justify-content: flex-end;
-    gap: 15px;
+    gap: 10px;
 }
 
 .menu a {
