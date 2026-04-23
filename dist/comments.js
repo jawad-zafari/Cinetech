@@ -33,12 +33,14 @@ async function loadComments(id, type, container) {
 function handleCommentSubmit(id, type, container) {
     const input = document.getElementById('comment-input');
     const text = input.value.trim();
-    if (!text)
+    const name = document.getElementById('comment-name');
+    const author = name.value.trim();
+    if (!text || !author)
         return;
     const newComment = {
         mediaId: id,
         mediaType: type,
-        author: "Utilisateur",
+        author: author,
         content: text,
         date: new Date().toLocaleDateString('fr-FR')
     };
@@ -46,6 +48,7 @@ function handleCommentSubmit(id, type, container) {
     allComments.unshift(newComment);
     localStorage.setItem('cinetech_comments', JSON.stringify(allComments));
     input.value = '';
+    name.value = '';
     loadComments(id, type, container);
 }
 //# sourceMappingURL=comments.js.map

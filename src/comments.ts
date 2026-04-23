@@ -41,13 +41,15 @@ const response = await fetch(`${BASE_URL}/${type}/${id}/reviews?api_key=${API_KE
 function handleCommentSubmit(id: string, type: string, container: HTMLElement) {
     const input = document.getElementById('comment-input') as HTMLTextAreaElement;
     const text = input.value.trim();
+    const name = document.getElementById('comment-name') as HTMLInputElement;
+    const author = name.value.trim();
 
-    if (!text) return;
+    if (!text || !author) return;
 
     const newComment = {
         mediaId: id,
         mediaType: type,
-        author: "Utilisateur",
+        author: author,
         content: text,
         date: new Date().toLocaleDateString('fr-FR')
     };
@@ -57,5 +59,6 @@ function handleCommentSubmit(id: string, type: string, container: HTMLElement) {
     localStorage.setItem('cinetech_comments', JSON.stringify(allComments));
 
     input.value = '';
+    name.value = '';
     loadComments(id, type, container);
 }
