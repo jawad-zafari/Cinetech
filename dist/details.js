@@ -131,7 +131,7 @@ function checkFavoriteStatus(id) {
     const isFavorite = favorites.some(fav => fav.id === id);
     if (isFavorite) {
         btnFav.classList.add('active');
-        btnFav.innerHTML = '<span class="heart-icon">❤️</span>';
+        btnFav.innerHTML = '<span class="heart-icon">♥︎</span>';
     }
     else {
         btnFav.classList.remove('active');
