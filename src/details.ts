@@ -1,4 +1,5 @@
 import { API_KEY, BASE_URL, IMAGE_BASE_URL } from './config.js';
+import { initComments } from './comments.js';
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
@@ -42,6 +43,10 @@ async function loadDetails(): Promise<void> {
             const btnFav = document.getElementById('btn-favorite');
             btnFav?.addEventListener('click', () => toggleFavorite(data, type));
         }
+
+        if (id && type) {
+    initComments(id, type);
+}
 
     } catch (error) {
         console.error("Erreur lors du chargement des détails:", error);
