@@ -3,18 +3,11 @@ import { IMAGE_BASE_URL } from './config.js';
 const favoritesGrid = document.getElementById('favorites-grid');
 
 
-/**
- * Affiche une notification
- */
-function showToast(message: string, targetElement: HTMLElement): void {
+// Affiche une notification
+function showToast(message: string): void {
     const toast = document.createElement('div');
-    toast.className = `toast-notification remove`; 
+    toast.className = 'toast-notification';
     toast.textContent = message;
-
-    // Calculez les coordonnées du bouton
-    const rect = targetElement.getBoundingClientRect();
-    toast.style.left = `${rect.left + (rect.width / 2)}px`;
-    toast.style.top = `${rect.top - 10}px`;
 
     document.body.appendChild(toast);
 
@@ -26,8 +19,8 @@ function showToast(message: string, targetElement: HTMLElement): void {
         toast.classList.remove('show');
         setTimeout(() => {
             toast.remove();
-        }, 300);
-    }, 3000);
+        }, 400);
+    }, 2000);
 }
 
 
@@ -79,7 +72,7 @@ function loadFavorites(): void {
         if (btnRemove) {
             btnRemove.addEventListener('click', (event) => {
                 event.stopPropagation(); // Évite de déclencher le clic sur la carte
-                showToast("Favori retiré", btnRemove as HTMLElement);
+                showToast("Favori retiré");
                 removeFromFavorites(fav.id, fav.type);
             });
         }
