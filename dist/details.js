@@ -211,8 +211,8 @@ async function loadSimilarItems() {
             return;
         }
         similarGrid.innerHTML = '';
-        // Prendre les 6 premiers résultats
-        const similarItems = data.results.slice(0, 6);
+        // Prendre les 20 premiers résultats
+        const similarItems = data.results.slice(0, 20);
         similarItems.forEach((item) => {
             const card = document.createElement('div');
             card.className = 'movie-card';

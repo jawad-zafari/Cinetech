@@ -146,9 +146,34 @@
     padding-right: 15px;
 }
 
-.catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
+
+.similar-section .catalog-grid {
+    display: flex !important; 
+    flex-wrap: nowrap;
+    overflow-x: auto; 
     gap: 20px;
-    margin-bottom: 50px;
+    padding: 10px 0 20px 0; 
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; 
+    
+    scrollbar-width: thin;
+    scrollbar-color: #e50914 #222;
+}
+
+.similar-section .catalog-grid::-webkit-scrollbar {
+    height: 8px;
+}
+.similar-section .catalog-grid::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 4px;
+}
+.similar-section .catalog-grid::-webkit-scrollbar-thumb {
+    background: #e50914;
+    border-radius: 4px;
+}
+
+.similar-section .movie-card {
+    flex: 0 0 200px; 
+    scroll-snap-align: start; 
 }
