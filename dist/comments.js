@@ -25,6 +25,18 @@ async function loadComments(id, type, container) {
         const localComments = JSON.parse(localStorage.getItem('cinetech_comments') || '[]')
             .filter((c) => c.mediaId == id && c.mediaType === type);
         container.innerHTML = '';
+        if (localComments.length === 0 && apiComments.length === 0) {
+            container.innerHTML = '<p style="color:#888;">Aucun avis pour le moment. Soyez le premier à donner votre avis !</p>';
+            return;
+        }
+        // Afficher d'abord les commentaires locaux
+        localComments.forEach((c) => {
+            container.appendChild(createCommentElement(c, true));
+        });
+        // Afficher les commentaires de l'API
+        apiComments.forEach((c) => {
+            container.appendChild(createCommentElement(c, false));
+        });
     }
     catch (error) {
         console.error("Erreur comments:", error);

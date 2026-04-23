@@ -32,7 +32,21 @@ async function loadComments(id: string, type: string, container: HTMLElement): P
 
         container.innerHTML = '';
 
-       
+        if (localComments.length === 0 && apiComments.length === 0) {
+            container.innerHTML = '<p style="color:#888;">Aucun avis pour le moment. Soyez le premier à donner votre avis !</p>';
+            return;
+        }
+
+        
+        // Afficher d'abord les commentaires locaux
+        localComments.forEach((c: any) => {
+            container.appendChild(createCommentElement(c, true));
+        });
+
+        // Afficher les commentaires de l'API
+        apiComments.forEach((c: any) => {
+            container.appendChild(createCommentElement(c, false));
+        });
 
     } catch (error) {
         console.error("Erreur comments:", error);
