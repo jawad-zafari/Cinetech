@@ -48,5 +48,17 @@ function loadFavorites() {
         favoritesGrid.appendChild(card);
     });
 }
+/**
+ * Supprime un élément spécifique du localStorage et rafraîchit l'affichage
+ */
+function removeFromFavorites(id, type) {
+    let favorites = JSON.parse(localStorage.getItem('cinetech_favorites') || '[]');
+    // Filtrer le tableau pour enlever l'élément cliqué
+    favorites = favorites.filter((fav) => !(fav.id == id && fav.type === type));
+    // Sauvegarder le nouveau tableau
+    localStorage.setItem('cinetech_favorites', JSON.stringify(favorites));
+    // Recharger la grille pour voir les changements immédiatement
+    loadFavorites();
+}
 loadFavorites();
 //# sourceMappingURL=favorites.js.map

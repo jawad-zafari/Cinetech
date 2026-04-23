@@ -58,5 +58,20 @@ function loadFavorites(): void {
     });
 }
 
+/**
+ * Supprime un élément spécifique du localStorage et rafraîchit l'affichage
+ */
+function removeFromFavorites(id: number | string, type: string): void {
+    let favorites = JSON.parse(localStorage.getItem('cinetech_favorites') || '[]');
+    
+    // Filtrer le tableau pour enlever l'élément cliqué
+    favorites = favorites.filter((fav: any) => !(fav.id == id && fav.type === type));
+    
+    // Sauvegarder le nouveau tableau
+    localStorage.setItem('cinetech_favorites', JSON.stringify(favorites));
+
+    // Recharger la grille pour voir les changements immédiatement
+    loadFavorites();
+}
 
 loadFavorites();
