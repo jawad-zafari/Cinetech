@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Détails</title>
-    <link rel="stylesheet" href="styles/Accueil.css">
-    <link rel="stylesheet" href="styles/details.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/Accueil.css" />
+    <link rel="stylesheet" href="styles/details.css" />
+  </head>
+  <body>
     <!-- <header>
         <nav>
             <div class="retour"><a href="index.html">Cinetech</a></div>
@@ -15,37 +15,48 @@
     </header> -->
 
     <main id="details-container">
-        <section id="movie-hero" class="movie-hero">
+      <section id="movie-hero" class="movie-hero">
         <h1 id="btn-back" class="btn-back">← Retour</h1>
-            <div class="hero-content-wrapper">
-                <div class="poster-container">
-                    <img id="movie-poster" src="" alt="Poster">
-                </div>
-               <div class="info-container">
-                <button id="btn-favorite" class="btn-favorite">
-                <span class="heart-icon">♡</span>
-                </button>
-    <h1 id="movie-title">Chargement...</h1>
-    
-    <div class="movie-meta-details">
-        <p><strong>Année :</strong> <span id="movie-year"></span></p>
-        <p><strong>Pays d'origine :</strong> <span id="movie-country"></span></p>
-        <p><strong>Réalisateur / Créateur :</strong> <span id="movie-director"></span></p>
-    </div>
+        <div class="hero-content-wrapper">
+          <div class="poster-container">
+            <img id="movie-poster" src="" alt="Poster" />
+          </div>
+          <div class="info-container">
+            <button id="btn-favorite" class="btn-favorite">
+              <span class="heart-icon">♡</span>
+            </button>
+            <h1 id="movie-title">Chargement...</h1>
 
-    <div class="genres" id="movie-genres"></div>
-    <h3>Synopsis</h3>
-    <p id="movie-overview"></p>
-</div>
+            <div class="movie-meta-details">
+              <p><strong>Année :</strong> <span id="movie-year"></span></p>
+              <p>
+                <strong>Pays d'origine :</strong>
+                <span id="movie-country"></span>
+              </p>
+              <p>
+                <strong>Réalisateur / Créateur :</strong>
+                <span id="movie-director"></span>
+              </p>
             </div>
-        </section>
 
-        <section class="cast-section">
-            <h2>Casting Principal</h2>
-            <div id="cast-grid" class="cast-grid"></div>
-        </section>
+            <div class="genres" id="movie-genres"></div>
+            <h3>Synopsis</h3>
+            <p id="movie-overview"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cast-section">
+        <h2>Casting Principal</h2>
+        <div id="cast-grid" class="cast-grid"></div>
+      </section>
+
+      <section class="similar-section">
+        <h2>Vous aimerez aussi</h2>
+        <div id="similar-grid" class="catalog-grid"></div>
+      </section>
     </main>
 
     <script type="module" src="dist/details.js"></script>
-</body>
+  </body>
 </html>

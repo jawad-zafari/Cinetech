@@ -130,3 +130,25 @@
     width: 100%;
     border-radius: 8px;
 }
+
+/* Section des recommandations (Films Similaires) */
+.similar-section {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #333; 
+}
+
+.similar-section h2 {
+    color: #fff;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    border-right: 5px solid #e50914; 
+    padding-right: 15px;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}

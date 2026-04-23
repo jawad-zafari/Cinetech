@@ -35,6 +35,7 @@ async function loadDetails(): Promise<void> {
 
         // 4. Récupération et affichage du casting
         loadCast(creditsData);
+        loadSimilarItems();
 
         if (id) {
             checkFavoriteStatus(id);
@@ -222,6 +223,61 @@ function showToast(message: string, isAdded: boolean, targetElement: HTMLElement
     }, 3000);
 }
 
+
+/**
+ * --- Récupération et affichage des recommandations (Films/Séries Similaires) ---
+ */
+async function loadSimilarItems(): Promise<void> {
+    const similarGrid = document.getElementById('similar-grid');
+    
+    if (!similarGrid || !id || !type) return;
+
+    try {
+        // Requête à l'API
+        const response = await fetch(`${BASE_URL}/${type}/${id}/similar?api_key=${API_KEY}&language=fr-FR`);
+        const data = await response.json();
+
+        if (!data.results || data.results.length === 0) {
+            const similarSection = document.querySelector('.similar-section') as HTMLElement;
+            if (similarSection) similarSection.style.display = 'none';
+            return;
+        }
+
+        similarGrid.innerHTML = '';
+
+        // Prendre les 6 premiers résultats
+        const similarItems = data.results.slice(0, 6);
+
+        similarItems.forEach((item: any) => {
+            const card = document.createElement('div');
+            card.className = 'movie-card';
+            card.style.cursor = 'pointer';
+
+            const title = item.title || item.name;
+            // Gestion des films sans affiche
+            const imgPath = item.poster_path 
+                ? `${IMAGE_BASE_URL}${item.poster_path}` 
+                : 'https://via.placeholder.com/300x450?text=Pas+d%27image';
+
+            card.innerHTML = `
+                <img src="${imgPath}" alt="${title}">
+                <div class="movie-info">
+                    <h3 class="movie-title">${title}</h3>
+                    <p>★ ${item.vote_average ? item.vote_average.toFixed(1) : 'N/A'}</p>
+                </div>
+            `;
+
+            card.addEventListener('click', () => {
+                window.location.href = `details.html?id=${item.id}&type=${type}`;
+            });
+
+            similarGrid.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Erreur lors du chargement des éléments similaires :", error);
+    }
+}
 
 
 loadDetails();
