@@ -152,7 +152,7 @@ function checkFavoriteStatus(id: string): void {
 
     if (isFavorite) {
         btnFav.classList.add('active');
-        btnFav.innerHTML = '<span class="heart-icon">❤️</span>';
+        btnFav.innerHTML = '<span class="heart-icon">♥︎</span>';
     } else {
         btnFav.classList.remove('active');
         btnFav.innerHTML = '<span class="heart-icon">♡</span>';
