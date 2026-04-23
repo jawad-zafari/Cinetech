@@ -77,3 +77,30 @@
     overflow: hidden;
     text-overflow: ellipsis; 
 }
+
+
+/*notification Toast*/
+
+.toast-notification {
+    position: fixed;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, 10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translate(-50%, -100%);
+}
+
+.toast-notification.remove {
+    background-color: #e50914;
+}

@@ -1,6 +1,28 @@
 import { IMAGE_BASE_URL } from './config.js';
 const favoritesGrid = document.getElementById('favorites-grid');
 /**
+ * Affiche une notification
+ */
+function showToast(message, targetElement) {
+    const toast = document.createElement('div');
+    toast.className = `toast-notification remove`;
+    toast.textContent = message;
+    // Calculez les coordonnées du bouton
+    const rect = targetElement.getBoundingClientRect();
+    toast.style.left = `${rect.left + (rect.width / 2)}px`;
+    toast.style.top = `${rect.top - 10}px`;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+/**
  * Charge et affiche la liste des favoris depuis le localStorage
  */
 function loadFavorites() {
@@ -42,6 +64,7 @@ function loadFavorites() {
         if (btnRemove) {
             btnRemove.addEventListener('click', (event) => {
                 event.stopPropagation(); // Évite de déclencher le clic sur la carte
+                showToast("Favori retiré", btnRemove);
                 removeFromFavorites(fav.id, fav.type);
             });
         }
