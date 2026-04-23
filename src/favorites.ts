@@ -45,7 +45,18 @@ function loadFavorites(): void {
             });
         }
 
-       
+        // Événement : Clic sur le bouton pour retirer des favoris
+        const btnRemove = card.querySelector('.btn-remove-fav');
+        if (btnRemove) {
+            btnRemove.addEventListener('click', (event) => {
+                event.stopPropagation(); // Évite de déclencher le clic sur la carte
+                removeFromFavorites(fav.id, fav.type);
+            });
+        }
+
+        favoritesGrid.appendChild(card);
+    });
 }
+
 
 loadFavorites();
