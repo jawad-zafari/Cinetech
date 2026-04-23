@@ -216,3 +216,49 @@
     /* Empêcher l'apparition de textes très longs */
     word-wrap: break-word; 
 }
+
+
+/* --- Style du formulaire de commentaire --- */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    margin-bottom: 30px;
+    direction: ltr; 
+}
+
+#comment-name, #comment-input {
+    background-color: #222;
+    color: white;
+    border: 1px solid #444;
+    padding: 12px;
+    border-radius: 4px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+#comment-name:focus, #comment-input:focus {
+    outline: none;
+    border-color: #e50914; 
+}
+
+#comment-name {
+    width: 50%; 
+}
+
+.btn-submit-comment {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.2s;
+}
+
+.btn-submit-comment:hover {
+    background-color: #b20710;
+}
