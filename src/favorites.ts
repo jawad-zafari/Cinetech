@@ -20,7 +20,32 @@ function loadFavorites(): void {
     // 3. Nettoyage de la grille
     favoritesGrid.innerHTML = '';
 
-    
+    // 4. Création des cartes pour chaque favori
+    favorites.forEach((fav: any) => {
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+
+        // Structure de la carte avec un bouton de suppression
+        card.innerHTML = `
+            <img src="${IMAGE_BASE_URL}${fav.poster_path}" alt="${fav.title}" style="cursor: pointer;">
+            <div class="movie-info">
+                <h3 class="movie-title">${fav.title}</h3>
+                <p>★ ${fav.vote_average ? fav.vote_average.toFixed(1) : 'N/A'}</p>
+                <button class="btn-remove-fav" data-id="${fav.id}" data-type="${fav.type}">
+                    Retirer
+                </button>
+            </div>
+        `;
+
+        // Événement : Clic sur l'image pour aller aux détails
+        const img = card.querySelector('img');
+        if (img) {
+            img.addEventListener('click', () => {
+                window.location.href = `details.html?id=${fav.id}&type=${fav.type}`;
+            });
+        }
+
+       
 }
 
 loadFavorites();
