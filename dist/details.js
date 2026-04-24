@@ -101,8 +101,8 @@ function loadCast(creditsData) {
     if (!castGrid || !creditsData.cast)
         return;
     castGrid.innerHTML = '';
-    // Afficher les 7 premiers acteurs
-    creditsData.cast.slice(0, 7).forEach((actor) => {
+    // Afficher les 15 premiers acteurs
+    creditsData.cast.slice(0, 15).forEach((actor) => {
         const actorCard = document.createElement('div');
         actorCard.className = 'actor-card';
         // Gestion des acteurs sans photo de profil
