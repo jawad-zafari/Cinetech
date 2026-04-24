@@ -8,11 +8,20 @@
     <link rel="stylesheet" href="styles/details.css" />
   </head>
   <body>
-    <!-- <header>
-        <nav>
-            <div class="retour"><a href="index.html">Cinetech</a></div>
-        </nav>
-    </header> -->
+    <header>
+      <nav>
+        <div class="logo"><a href="index.html">Cinetech</a></div>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Rechercher..." />
+        </div>
+        <div class="menu">
+          <a href="films.html">Films</a>
+          <a href="series.html">Séries</a> 
+          <a href="favorites.html">Favoris ♥︎</a>
+          <a href="#">Connexion</a>
+        </div>
+      </nav>
+    </header>
 
     <main id="details-container">
       <section id="movie-hero" class="movie-hero">
@@ -25,6 +34,8 @@
             <button id="btn-favorite" class="btn-favorite">
               <span class="heart-icon">♡</span>
             </button>
+               <!-- <h1 class="comment-icon"><a href="#comments-section">💬</a></h1> -->
+
             <h1 id="movie-title">Chargement...</h1>
 
             <div class="movie-meta-details">
@@ -56,7 +67,7 @@
         <div id="similar-grid" class="catalog-grid"></div>
       </section>
 
-      <section class="comments-section">
+      <section id="comments-section" class="comments-section">
     <h2>Avis et Commentaires</h2>
     
     <form id="comment-form" class="comment-form">
@@ -72,5 +83,6 @@
     </main>
 
     <script type="module" src="dist/details.js"></script>
+    <script type="module" src="dist/search.js"></script>
   </body>
 </html>
