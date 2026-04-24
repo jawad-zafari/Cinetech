@@ -120,15 +120,41 @@
 }
 
 .cast-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    display: flex !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 20px;
-    padding: 20px 50px;
+    padding: 20px 50px 30px 50px; 
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scroll-snap-align: center;
+    scrollbar-width: thin;
+    scrollbar-color: #e50914 #222;
+}
+
+.cast-grid::-webkit-scrollbar {
+    height: 8px;
+}
+.cast-grid::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 4px;
+}
+.cast-grid::-webkit-scrollbar-thumb {
+    background: #e50914;
+    border-radius: 4px;
+}
+
+.actor-card {
+    flex: 0 0 150px; 
+    scroll-snap-align: start; 
+    text-align: center;
 }
 
 .actor-card img {
     width: 100%;
     border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 /* Section des recommandations (Films Similaires) */
@@ -155,8 +181,8 @@
     gap: 20px;
     padding: 10px 0 20px 0; 
     scroll-behavior: smooth;
-    scroll-snap-type: x mandatory; 
-    
+    scroll-snap-type: x mandatory;
+    scroll-snap-align: center;
     scrollbar-width: thin;
     scrollbar-color: #e50914 #222;
 }
@@ -261,4 +287,219 @@
 
 .btn-submit-comment:hover {
     background-color: #b20710;
+}
+
+
+/* Style pour le système de réponses  */
+.reply-btn {
+    background: none;
+    border: none;
+    color: #e50914;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.reply-btn:hover {
+    color: #ff1e27;
+}
+
+.reply-form-container {
+    display: none;
+    margin-top: 15px;
+    padding-left: 20px;
+    border-left: 2px solid #333;
+}
+
+.reply-form-container.active {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reply-input, .reply-name {
+    background-color: #222;
+    color: white;
+    border: 1px solid #444;
+    padding: 8px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.btn-submit-reply {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+    font-size: 0.85rem;
+}
+
+.btn-submit-reply:hover {
+    background-color: #e50914;
+}
+
+.replies-list {
+    margin-top: 15px;
+    padding-left: 20px;
+    border-left: 2px solid #e50914;
+}
+
+.reply-item {
+    background-color: #111;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.reply-header {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+}
+
+.reply-header strong {
+    color: #ccc;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .movie-hero {
+        padding: 80px 20px 30px; 
+        min-height: auto;
+    }
+    .hero-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center; 
+        gap: 20px;
+    }
+    .poster-container img {
+        width: 220px; 
+    }
+
+    .btn-back {
+        top: 15px;
+        left: 15px;
+        background: rgba(0,0,0,0.5);
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .btn-favorite {
+        left: 80px;
+        top: 70px;
+        margin: 15px auto;
+    }
+
+    .movie-meta-details {
+    font-size: 0.8rem;
+}
+
+
+    #comment-name {
+        width: 100%; 
+    }
+    
+    .cast-grid {
+        padding: 10px;
+    }
+    
+    .similar-section h2 {
+        font-size: 1rem;
+    }
+    .catalog-grid {
+    scroll-snap-align: center;
+}
+}
+
+@media (max-width: 480px) {
+    .movie-hero {
+        padding: 60px 15px 30px;
+        min-height: auto;
+        display: block; 
+    }
+
+    .hero-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .poster-container img {
+        width: 180px; 
+        box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+    }
+
+    .info-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn-back {
+        top: 15px;
+        left: 15px;
+        font-size: 1rem;
+    }
+
+    .btn-favorite {
+        font-size: 5px !important;
+        padding: 5px;
+        left: 100px;
+        top: 60px;
+        margin: 10px auto;
+        display: flex;
+        width: fit-content;
+    }
+
+    .cast-grid {
+        padding: 15px;
+    }
+
+    .similar-section .catalog-grid {
+        padding: 10px 0;
+        gap: 0;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .similar-section .catalog-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .similar-section .movie-card {
+        flex: 0 0 85vw; 
+        scroll-snap-align: center;
+        border-radius: 0;
+        background-color: transparent;
+    }
+
+    .similar-section .movie-card img {
+        width: 90%; 
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+
+    .comment-form {
+        padding: 0 15px;
+        width: 100%;
+    }
+
+    #comment-name {
+        width: 100% !important;
+    }
+
+    .comment-item {
+        margin: 10px;
+        padding: 12px;
+    }
 }

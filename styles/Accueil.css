@@ -249,7 +249,7 @@ nav {
 } */
 
 .carousel-container .movie-card {
-    flex: 0 0 200px; 
+    flex: 0 0 300px; 
     scroll-snap-align: start; 
 }
 
@@ -491,3 +491,86 @@ nav {
 .social-links a:hover {
     background-color: #e50914;
 }
+
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .menu {
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .search-box input {
+        max-width: 100%;
+        width: 90vw;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-overlay {
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 100%);
+        align-items: flex-end;
+    }
+    .hero-carousel-container {
+        height: 400px;
+    }
+
+    .news-item {
+        flex-direction: column;
+    }
+    .news-image {
+        flex: none;
+        height: 200px;
+        width: 100%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-col {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container {
+        padding: 10px ; 
+        gap: 10px;
+    }
+
+    .carousel-container .movie-card {
+        flex: 0 0 85vw;
+        border-radius: 10px; 
+        scroll-snap-align: center;
+        box-shadow: none;
+    }
+
+    .carousel-container .movie-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+        display: none;
+    }
+   
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+    .movie-card h3 {
+        font-size: 14px;
+    }
+
+} 
+

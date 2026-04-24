@@ -54,3 +54,33 @@
     font-size: 1.2rem;
     font-weight: bold;
 }
+
+
+@media (max-width: 768px) {
+    .catalog-page {
+        padding: 20px 3%;
+    }
+    .page-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .full-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+    }
+    .pagination-controls {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .pagination-controls button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .full-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
