@@ -116,8 +116,8 @@ function loadCast(creditsData: any): void {
 
     castGrid.innerHTML = '';
 
-    // Afficher les 7 premiers acteurs
-    creditsData.cast.slice(0, 7).forEach((actor: any) => {
+    // Afficher les 15 premiers acteurs
+    creditsData.cast.slice(0, 15).forEach((actor: any) => {
         const actorCard = document.createElement('div');
         actorCard.className = 'actor-card';
         
