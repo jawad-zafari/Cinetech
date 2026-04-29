@@ -59,3 +59,6 @@ Ouvrez `index.html` via un serveur local (ex: Live Server sur VS Code).
    * `src/` : Logique TypeScript (recherche, commentaires, gestion API).
 
    * `styles/` : Fichiers CSS organisés par page et gestion du responsive.
+
+   ### 👤 Auteur
+   * ## Jawad zafari - Étudiant à La Plateforme
