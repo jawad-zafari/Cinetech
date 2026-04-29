@@ -18,3 +18,9 @@ Le projet implémente toutes les exigences du cahier des charges avec une attent
     - Possibilité pour l'utilisateur de publier ses propres avis (nom + texte).
     - **Système de Réponses** : Fonctionnalité permettant de répondre directement à un commentaire existant.
 - **Design Full-Responsive** : Interface optimisée pour Desktop, Tablette et Mobile, avec des menus chancelants adaptés.
+## 🛠️ Stack Technique
+
+- **Langages** : HTML5, CSS3 (Grid & Flexbox), TypeScript.
+- **API** : Intégration de l'API TMDB (Fetch API).
+- **Stockage** : Utilisation du `LocalStorage` pour la gestion des données utilisateurs (favoris, commentaires locaux, réponses).
+- **Architecture** : Séparation des préoccupations (modules TypeScript pour les commentaires, la configuration, et les détails).
