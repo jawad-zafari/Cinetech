@@ -24,3 +24,22 @@ Le projet implémente toutes les exigences du cahier des charges avec une attent
 - **API** : Intégration de l'API TMDB (Fetch API).
 - **Stockage** : Utilisation du `LocalStorage` pour la gestion des données utilisateurs (favoris, commentaires locaux, réponses).
 - **Architecture** : Séparation des préoccupations (modules TypeScript pour les commentaires, la configuration, et les détails).
+
+## ⚙️ Installation et Configuration
+
+1. **Clonage du dépôt** :
+   ```bash
+   git clone [https://github.com/jawad-zafari/Cinetech.git]
+   ```
+2. **Configuration de l'API** :
+
+Modifiez le fichier `config.ts` (ou `.js`) et insérez votre clé API TMDB :
+
+```javascript
+export const API_KEY = "cle API";
+```
+3. **Compilation** :
+Si vous modifiez les fichiers `.ts`, utilisez le compilateur TypeScript :
+```Bash
+tsc -w
+```
