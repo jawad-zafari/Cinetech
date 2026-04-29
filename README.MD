@@ -43,3 +43,19 @@ Si vous modifiez les fichiers `.ts`, utilisez le compilateur TypeScript :
 ```Bash
 tsc -w
 ```
+4. **Lancement** :
+Ouvrez `index.html` via un serveur local (ex: Live Server sur VS Code).
+
+## 📁 Structure du projet
+
+   * `index.html` : Accueil du site.
+
+   * `films.html` / ``series.html`` : Listes avec pagination.
+
+   * `details.html` : Page de détails d'une œuvre.
+
+   * `favorites.html` : Liste des favoris de l'utilisateur.
+
+   * `src/` : Logique TypeScript (recherche, commentaires, gestion API).
+
+   * `styles/` : Fichiers CSS organisés par page et gestion du responsive.
