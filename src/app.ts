@@ -12,7 +12,7 @@ export async function getPopularMovies(): Promise<void> {
         
         const movies: Movie[] = data.results;
         
-        console.log("Data fetched successfully.");
+        // console.log("Data fetched successfully.");
         
         displayMovies(movies);
 
