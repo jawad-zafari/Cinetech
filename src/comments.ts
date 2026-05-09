@@ -187,7 +187,7 @@ function handleCommentSubmit(id: string, type: string, container: HTMLElement) {
   loadComments(id, type, container);
 }
 
-// function to save answers
+// fonction pour enregistrer les réponses
 function handleReplySubmit(
   parentId: string,
   author: string,
