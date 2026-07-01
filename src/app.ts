@@ -47,7 +47,8 @@ export function displayMovies(movies: Movie[]): void {
     });
 }
 
-// Récupère et affiche les séries télévisées populaires dans le conteneur dédié
+// Récupèrer et afficher les séries télévisées populaires dans le conteneur dédié
+
 export async function getPopularSeries(): Promise<void> {
     try {
         const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=fr-FR`);
