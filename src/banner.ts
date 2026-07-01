@@ -6,7 +6,6 @@ import type { Movie } from './types.js';
 
 export async function loadSimpleScrollBanner(): Promise<void> {
     try {
-        // Récupération des données
         const response = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=fr-FR`);
         const data = await response.json();
         const bannerMovies: Movie[] = data.results.slice(0, 10); 
