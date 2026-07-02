@@ -210,7 +210,7 @@ nav {
     flex: 0 0 100%; 
     scroll-snap-align: start; 
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     position: relative;
     display: flex;
     align-items: center;
@@ -645,7 +645,7 @@ nav {
     }
 
     .hero-carousel-container {
-        height: 360px;
+        height: 400px;
     }
 
     .hero-carousel-container::-webkit-scrollbar {
