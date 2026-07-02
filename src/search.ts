@@ -89,6 +89,21 @@ if (searchInput) {
         }
     });
 
+    // Déclencher la recherche avec la touche "Entrée"
+    searchInput.addEventListener('keypress', (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); 
+            executeSearch();
+        }
+    });
+}
+
+// Déclencher la recherche au clic sur l'icône rouge
+if (searchIcon) {
+    searchIcon.style.cursor = 'pointer';
+    searchIcon.addEventListener('click', executeSearch);
+}
+
 // Fermer le menu déroulant si on clique en dehors
 document.addEventListener('click', (event) => {
     if (searchInput && event.target !== searchInput && event.target !== suggestionBox) {
