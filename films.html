@@ -9,19 +9,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-   <header>
-      <nav>
-        <div class="logo"><a href="index.html">Cinetech</a></div>
-        <div class="search-box">
-          <input type="text" id="searchInput" placeholder="Rechercher..." />
-        </div>
-        <div class="menu">
-          <a href="series.html">Séries</a>
-          <a href="favorites.html">Favoris ♥︎</a>
-          <a href="#">Connexion</a>
-        </div>
-      </nav>
-    </header>
+     <header>
+  <nav>
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
+    
+    <div class="nav-top">
+      <div class="logo"><a href="index.html">Cinetech</a></div>
+      
+      <label for="menu-toggle" class="hamburger-label">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </label>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Rechercher un film ou une série..." />
+      <i class="fas fa-search search-input-icon"></i>
+    </div>
+
+    <div class="menu">
+      <a href="films.html">Films</a>
+      <a href="series.html">Séries</a> 
+      <a href="favorites.html">Favoris ♥︎</a>
+      <a href="#">Connexion</a>
+    </div>
+  </nav>
+</header>
     <section class="section-title-1">
       <h1>TOP 10 ★★★</h1>
     </section>
