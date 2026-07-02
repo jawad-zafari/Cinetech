@@ -328,6 +328,7 @@ nav {
     text-align: center;
     padding-bottom: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .movie-card:hover {
@@ -635,16 +636,16 @@ nav {
 
     .section-title-1 {
         left: 20px;
-        margin: 15px;
+        margin: 5px;
     }
 
     .section-title-1 h1 {
-        font-size: large;
-        padding: 5px 15px;
+        font-size: small;
+        padding: 5px 10px;
     }
 
     .hero-carousel-container {
-        height: 500px;
+        height: 360px;
     }
 
     .hero-carousel-container::-webkit-scrollbar {
