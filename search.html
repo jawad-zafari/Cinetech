@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Résultats de recherche - Cinetech</title>
+    <link rel="stylesheet" href="styles/Accueil.css" />
+    <link rel="stylesheet" href="styles/films.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body class="bg-[#141414] text-white font-[Arial,sans-serif] m-0 p-0 overflow-x-hidden">
+    
+   <header>
+  <nav>
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
+    
+    <div class="nav-top">
+      <div class="logo"><a href="index.html">Cinetech</a></div>
+      
+      <label for="menu-toggle" class="hamburger-label">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </label>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Rechercher un film ou une série..." />
+      <i class="fas fa-search search-input-icon"></i>
+    </div>
+
+    <div class="menu">
+      <a href="films.html">Films</a>
+      <a href="series.html">Séries</a> 
+      <a href="favorites.html">Favoris ♥︎</a>
+      <a href="#">Connexion</a>
+    </div>
+  </nav>
+</header>
+
+    <main class="catalog-page">
+      <h1 class="page-title" id="search-title">Résultats pour : "..."</h1>
+      
+      <div id="search-results-grid" class="full-grid">
+         </div>
+      
+      <div id="no-results-message" style="display: none; text-align: center; margin-top: 50px; color: #888; font-size: 1.2rem;">
+          Aucun résultat trouvé pour cette recherche.
+      </div>
+    </main>
+
+    <script type="module" src="dist/searchResults.js"></script>
+    <script type="module" src="dist/search.js"></script>
+  </body>
+</html>
