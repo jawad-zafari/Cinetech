@@ -8,3 +8,10 @@ const searchTitle = document.getElementById('search-title');
 const resultsGrid = document.getElementById('search-results-grid');
 const noResultsMsg = document.getElementById('no-results-message');
 
+async function loadSearchResults(): Promise<void> {
+    if (!query || !resultsGrid || !searchTitle) return;
+
+   
+}
+
+loadSearchResults();
