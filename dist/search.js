@@ -1,19 +1,19 @@
 import { API_KEY, BASE_URL } from './config.js';
-// pour contrôler le temps de recherche
 let searchTimeout;
 const searchInput = document.getElementById('searchInput');
+const searchIcon = document.querySelector('.search-input-icon');
 const suggestionBox = document.createElement('ul');
 suggestionBox.className = "suggestion-dropdown";
 if (searchInput && searchInput.parentElement) {
     searchInput.parentElement.appendChild(suggestionBox);
 }
+// Fonction pour récupérer les suggestions depuis l'API
 async function fetchSearchSuggestions(query) {
     try {
-        // multi pour la recherche combinée
-        const url = `${BASE_URL}/search/multi?api_key=${API_KEY}&language=fr-FR&query=${query}`;
+        const url = `${BASE_URL}/search/multi?api_key=${API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}`;
         const response = await fetch(url);
         const data = await response.json();
-        // Filtrer les résultats pour afficher uniquement les films et séries (supprimer les acteurs des résultats)
+        // Filtrer pour afficher uniquement les films et séries
         const results = data.results.filter((item) => item.media_type === 'movie' || item.media_type === 'tv');
         showSuggestions(results.slice(0, 10));
     }
@@ -21,6 +21,7 @@ async function fetchSearchSuggestions(query) {
         console.error("Erreur lors de la recherche :", error);
     }
 }
+// Fonction pour afficher les suggestions sous l'input
 function showSuggestions(items) {
     suggestionBox.innerHTML = "";
     if (items.length === 0) {
@@ -30,7 +31,6 @@ function showSuggestions(items) {
     suggestionBox.style.display = "block";
     items.forEach((item) => {
         const li = document.createElement('li');
-        // Reconnaissance du nom et de la date basée sur un film ou une série
         const title = item.title || item.name;
         const rawDate = item.release_date || item.first_air_date;
         const year = rawDate ? ` (${rawDate.substring(0, 4)})` : '';
@@ -39,17 +39,26 @@ function showSuggestions(items) {
         li.addEventListener('click', () => {
             suggestionBox.style.display = "none";
             searchInput.value = title;
-            // ajouter un type de contenu au lien de la page de détail
             window.location.href = `details.html?id=${item.id}&type=${item.media_type}`;
         });
         suggestionBox.appendChild(li);
     });
 }
+// Fonction pour exécuter la recherche globale et rediriger vers la page des résultats
+function executeSearch() {
+    if (!searchInput)
+        return;
+    const query = searchInput.value.trim();
+    if (query.length > 0) {
+        window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+    }
+}
+// --- Événements et interactions ---
 if (searchInput) {
+    // Gestion des suggestions automatiques
     searchInput.addEventListener('input', (event) => {
         const target = event.target;
         const searchTerm = target.value.trim();
-        // Effacer le minuteur précédent
         clearTimeout(searchTimeout);
         if (searchTerm.length > 1) {
             searchTimeout = setTimeout(() => {
@@ -60,11 +69,23 @@ if (searchInput) {
             suggestionBox.style.display = "none";
         }
     });
-    // Fermer le menu si on clique en dehors
-    document.addEventListener('click', (event) => {
-        if (searchInput && event.target !== searchInput && event.target !== suggestionBox) {
-            suggestionBox.style.display = "none";
+    // Déclencher la recherche avec la touche "Entrée"
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            executeSearch();
         }
     });
 }
+// Déclencher la recherche au clic sur l'icône rouge
+if (searchIcon) {
+    searchIcon.style.cursor = 'pointer';
+    searchIcon.addEventListener('click', executeSearch);
+}
+// Fermer le menu déroulant si on clique en dehors
+document.addEventListener('click', (event) => {
+    if (searchInput && event.target !== searchInput && event.target !== suggestionBox) {
+        suggestionBox.style.display = "none";
+    }
+});
 //# sourceMappingURL=search.js.map

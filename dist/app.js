@@ -6,7 +6,7 @@ export async function getPopularMovies() {
         const response = await fetch(url);
         const data = await response.json();
         const movies = data.results;
-        console.log("Data fetched successfully.");
+        // console.log("Data fetched successfully.");
         displayMovies(movies);
     }
     catch (error) {
@@ -33,7 +33,7 @@ export function displayMovies(movies) {
         movieGrid.appendChild(movieCard);
     });
 }
-// Récupère et affiche les séries télévisées populaires dans le conteneur dédié
+// Récupèrer et afficher les séries télévisées populaires dans le conteneur dédié
 export async function getPopularSeries() {
     try {
         const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=fr-FR`);

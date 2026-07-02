@@ -2,7 +2,6 @@ import { API_KEY, BASE_URL, IMAGE_BASE_URL } from './config.js';
 //  Charge les 10 films tendance
 export async function loadSimpleScrollBanner() {
     try {
-        // Récupération des données
         const response = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=fr-FR`);
         const data = await response.json();
         const bannerMovies = data.results.slice(0, 10);
