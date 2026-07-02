@@ -1,43 +1,51 @@
-/* Style de la page catalogue */
 .catalog-page {
-    padding: 40px 5%;
+    padding: 20px 3%;
     min-height: 80vh;
 }
 
 .page-title {
     color: white;
-    margin-bottom: 30px;
-    font-size: 2rem;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
     border-left: 4px solid #e50914;
     padding-left: 15px;
 }
-
-/* Grille complète pour afficher beaucoup d'éléments */
+.movie-title {
+    padding: 10px 0 5px;
+    font-size: 0.9rem;
+    font-weight: 200;
+}
 .full-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     margin-bottom: 50px;
 }
 
-/* Style de la pagination */
 .pagination-controls {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    flex-wrap: wrap; 
+    gap: 10px;
     padding-bottom: 40px;
+    font-size: 0.9rem;
 }
 
 .pagination-controls button {
     background-color: #e50914;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
+    padding: 5px 10px;
+    font-size: 0.8rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition:all 0.3s ease;
+}
+.pagination-controls button:hover {
+    background-color: #b20710;
+    transform: scale(1.05);
+    box-shadow: #b20710 0px 0px 10px;
 }
 
 .pagination-controls button:disabled {
@@ -51,36 +59,45 @@
 
 #page-indicator {
     color: white;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
 
-@media (max-width: 768px) {
-    .catalog-page {
-        padding: 20px 3%;
-    }
-    .page-title {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
+@media (min-width: 481px) {
     .full-grid {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 15px;
     }
-    .pagination-controls {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .pagination-controls button {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
 }
 
-@media (max-width: 480px) {
+
+@media (min-width: 769px) {
+    .catalog-page {
+        padding: 40px 5%;
+    }
+
+    .page-title {
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+#page-indicator {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
     .full-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 25px;
+    }
+
+    .pagination-controls {
+        flex-wrap: nowrap;
+        gap: 20px;
+    }
+
+    .pagination-controls button {
+        padding: 10px 20px;
+        font-size: 1rem;
     }
 }
